@@ -36,6 +36,12 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=gsvnet
 
+  composer:
+    image: composer/composer:alpine
+    volumes:
+      - ./gsvnet:/var/www/gsvnet
+    working_dir: /var/www/gsvnet
+
   # mailcatcher:
   #   image: schickling/mailcatcher
   #   ports:
