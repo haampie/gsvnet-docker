@@ -9,7 +9,7 @@ services:
         UID: 1000
     links:
       - mysql
-      - mailcatcher
+      # - mailcatcher
     volumes:
       - ./gsvnet:/var/www/gsvnet
 
@@ -22,7 +22,7 @@ services:
       - 443:443
     links:
       - php
-      - mailcatcher
+      # - mailcatcher
     volumes:
       - ./gsvnet:/var/www/gsvnet
 
@@ -36,9 +36,9 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=gsvnet
 
-  mailcatcher:
-    image: schickling/mailcatcher
-    ports:
-        - 1025:1025
-        - 1080:1080
-    restart: always
+  # mailcatcher:
+  #   image: schickling/mailcatcher
+  #   ports:
+  #       - 1025:1025
+  #       - 1080:1080
+  #   restart: always
