@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  php:
+    build:
+      dockerfile: Dockerfile
+      context: ./Docker/php7-fpm
+      args:
+        UID: 1000
+    links:
+      - mysql
+      - mailcatcher
+    volumes:
+      - ./gsvnet:/var/www/gsvnet
+
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./Docker/nginx
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - php
+      - mailcatcher
+    volumes:
+      - ./gsvnet:/var/www/gsvnet
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./Docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MYSQL_USER=gsvnet
+      - MYSQL_PASSWORD=supermoeilijkwachtwoorddatlokaalgebruiktwordt
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=gsvnet
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+        - 1025:1025
+        - 1080:1080
+    restart: always
