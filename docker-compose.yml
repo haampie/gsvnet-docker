@@ -9,6 +9,7 @@ services:
         UID: 1000
     links:
       - mysql
+      - redis
       # - mailcatcher
     volumes:
       - ./gsvnet:/var/www/gsvnet
@@ -41,6 +42,10 @@ services:
     volumes:
       - ./gsvnet:/var/www/gsvnet
     working_dir: /var/www/gsvnet
+
+  redis:
+    image: redis:alpine
+
 
   # mailcatcher:
   #   image: schickling/mailcatcher
