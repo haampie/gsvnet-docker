@@ -1,0 +1,3 @@
+[submodule "gsvnet"]
+	path = gsvnet
+	url = git@github.com:haampie/gsvnet.git
