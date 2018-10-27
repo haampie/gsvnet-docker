@@ -33,12 +33,6 @@ MAIL_DRIVER=log
 REDIS_HOST=redis
 ```
 
-Zet een referentie in je hosts file in `/etc/hosts`:
-
-```
-127.0.0.1    gsvnet.app
-```
-
 # Docker runnen
 
 Installeer `docker` en `docker-compose`.
@@ -56,11 +50,17 @@ docker-compose run php php artisan migrate
 docker-compose run php php artisan db:seed
 ```
 
+Doe dan nog even (vanuit de map gsvnet-docker)
+
+```
+sudo chmod 777 gsvnet/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
+```
+
 Tenslotte:
 
 ```
 docker-compose up
 ```
 
-Ga naar `http://gsvnet.app` in je browser.
+Ga naar `http://0.0.0.0` in je browser.
 
