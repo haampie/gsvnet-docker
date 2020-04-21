@@ -40,17 +40,23 @@ Installeer `docker` en `docker-compose`.
 Run
 
 ```
-docker-compose run composer install
+sudo docker-compose run composer install
 ```
 
 om de dependencies te downloaden. Run vervolgens
 
 ```
-docker-compose run php php artisan migrate
-docker-compose run php php artisan db:seed
+sudo docker-compose run php php artisan migrate
+sudo docker-compose run php php artisan db:seed
 ```
 
-Doe dan nog even (vanuit de map gsvnet-docker)
+om de database te maken en te vullen. Run daarna
+
+```
+sudo docker-compose run php php artisan key:generate
+```
+
+om een application key te genereren (komt in je .env-bestand te staan). Doe dan nog even (vanuit de map gsvnet-docker)
 
 ```
 sudo chmod 777 gsvnet/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
@@ -59,7 +65,7 @@ sudo chmod 777 gsvnet/vendor/ezyang/htmlpurifier/library/HTMLPurifier/Definition
 Tenslotte:
 
 ```
-docker-compose up
+sudo docker-compose up
 ```
 
 Ga naar `http://0.0.0.0` in je browser.
