@@ -38,7 +38,7 @@ services:
       - MYSQL_DATABASE=gsvnet
 
   composer:
-    image: composer:latest
+    image: composer:1.10
     volumes:
       - ./gsvnet:/var/www/gsvnet
     working_dir: /var/www/gsvnet
